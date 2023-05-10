@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>División de la página en dos partes</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="update-sucursal.component.css">
+
+
+  </head>
+  <body>
+    <div class="left">
+      <p>Aquí se guarda la información básica de las sucursales, junto con que libros tiene disponible</p>
+    </div>
+    <div class="right">
+      <h2>Completa la información de la sucursal</h2>
+      <form>
+        <label for="direccion">ID:</label>
+        <input type="text" id="id" name="id">
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion">
+        <label for="localidad">Localidad:</label>
+        <input type="text" id="localidad" name="localidad">
+        <div id="items">
+          <label for="item">Item:</label>
+          <input type="text" name="item1" /><br>
+        </div>
+        <button type="button" onclick="agregarCampo()">Agregar item</button>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+  
+  </body>
+</html>

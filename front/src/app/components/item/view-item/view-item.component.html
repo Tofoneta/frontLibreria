@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>División de Body con Tabla Vacía</title>
+  <link rel="stylesheet" href="view-item.component.css">
+</head>
+<body>
+  <div class="top">
+    <div class="left">
+      <button>Ver Todos</button>
+    </div>
+   
+    <div class="right">
+      <input type="text" placeholder="Buscar por ID">
+      <button>Buscar</button>
+      <button>Ver Disponibilidad</button>
+    </div>
+  </div>
+  <div class="bottom">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+
+          <th>Precio</th>
+          <th>ISBN</th>
+          <th>Titulo</th>
+          <th>Autor</th>
+          <th>Area</th>
+          <th>Numero de edición</th>
+          <th>Cantidad de páginas</th>          
+          <th>Editorial</th>
+          <th>Borrar</th>
+
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of itemList">
+            <td>{{item.id_item}}</td>
+            <td>{{item.precio}}</td>
+          
+            <td>{{item.libro.isbn}}</td>
+            <td>{{item.libro.titulo}}</td>
+            <td>{{item.libro.autor}}</td>
+            <td>{{item.libro.area}}</td>
+            <td>{{item.libro.numeroEdicion}}</td>
+            <td>{{item.libro.cantidadPaginas}}</td>
+            <td>{{item.libro.editorial}}</td>
+            <td><button (click)="delete(item.id_item)">Borrar</button></td>            
+         
+          </tr>
+        <!-- Aquí se insertarán los datos de la tabla -->
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
