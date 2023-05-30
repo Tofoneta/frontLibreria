@@ -1,5 +1,6 @@
 export class libro{
-    isbn : string
+    id: number;
+    isbn : number
     titulo : string
     autor: string
     area: string

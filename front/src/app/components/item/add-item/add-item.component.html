@@ -11,30 +11,45 @@
     </div>
     <div class="right">
       <h2>Completa la información del libro</h2>
-      <form>
-        <tfoot>
+        <form (formGroup)="itemForm">
+
         <tr>
         <label for="isbn">ISBN:</label>
-        <input type = "text" id = "isbn" name="isbn" [(ngModel)]="isbn">
+        <input type = "number" name = "isbn" formControlName='isbn'>
+        <p *ngIf="isbn.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+         
         <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" [(ngModel)]="titulo">
-        <label for="autor">Autor:</label>
-        <input type="text" id="autor" name="autor" [(ngModel)]="autor">
-        <label for="area">Área:</label>
-        <input type="text" id="area" name="area" [(ngModel)]="area">
-        <label for="edicion">Número de edición:</label>
-        <input type="text" id="edicion" name="edicion" [(ngModel)]="edicion">
-        <label for="paginas">Cantidad de páginas:</label>
-        <input type="text" id="paginas" name="paginas" [(ngModel)]="paginas">
-        <label for="editorial">Editorial:</label>
-        <input type="text" id="editorial" name="editorial" [(ngModel)]="editorial">
-        <label for="editorial">Precio:</label>
-        <input type="text" id="precio" name="precio" [(ngModel)]="precio">
-        <button (click)="addSucursal()">Agregar</button>            
-      </tr>
+        <input type="text"  name="titulo" formControlName='titulo'>
+        <p *ngIf="titulo.errors.required" style="font-size: small; color: red">campo obligatorio</p>
 
-        </tfoot>
+        <label for="autor">Autor:</label>
+        <input type="text"  name="autor" formControlName='autor'>
+        <p *ngIf="autor.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+
+        <label for="area">Área:</label>
+        <input type="text"  name="area" formControlName='area'>
+        <p *ngIf="area.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+
+        <label for="edicion">Número de edición:</label>
+        <input type="number"  name="edicion" formControlName='edicion'>
+        <p *ngIf="numeroEdicion.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+
+        <label for="paginas">Cantidad de páginas:</label>
+        <input type="number" name="paginas" formControlName='paginas'>
+        <p *ngIf="paginas.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+
+        <label for="editorial">Editorial:</label>
+        <input type="text"  name="editorial" formControlName='editorial'>
+        <p *ngIf="editorial.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+
+        <label for="number">Precio:</label>
+        <input name="precio" formControlName='precio'>
+        <p *ngIf="precio.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+
+        <button (click)="addItem()">Agregar</button>            
+      </tr>
       </form>
+
     </div>
   </body>
 </html>

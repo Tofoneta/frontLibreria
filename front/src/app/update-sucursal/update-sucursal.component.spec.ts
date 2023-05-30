@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddSucursalComponent } from './add-sucursal.component';
+import { UpdateSucursalComponent } from './update-sucursal.component';
 
-describe('AddSucursalComponent', () => {
-  let component: AddSucursalComponent;
-  let fixture: ComponentFixture<AddSucursalComponent>;
+describe('UpdateSucursalComponent', () => {
+  let component: UpdateSucursalComponent;
+  let fixture: ComponentFixture<UpdateSucursalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddSucursalComponent ]
+      declarations: [ UpdateSucursalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddSucursalComponent);
+    fixture = TestBed.createComponent(UpdateSucursalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,4 +23,3 @@ describe('AddSucursalComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-

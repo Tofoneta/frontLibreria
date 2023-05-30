@@ -5,6 +5,6 @@ export class sucursal{
     idSucursal: number
     direccion: string
     localidad: string
-    items : Array<item>
+    id_item : Array<number>
 
 }

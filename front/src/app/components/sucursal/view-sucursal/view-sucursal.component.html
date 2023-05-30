@@ -21,16 +21,51 @@
       <thead>
         <tr>
           <th>Dirección</th>
-          <th>Sucursal</th>
-          <th>Item</th>
-          <th>Columna 9 Borrar</th>
-
+          <th>Sucursal</th> 
+          <th>Ver</th>       
+          <th>Borrar</th>
         </tr>
       </thead>
-      <tbody>
+      
+        <tbody>
+          <tr *ngFor="let sucursal of sucursalList">
+            <td>{{sucursal.idSucursal}}</td>
+
+            <td>{{sucursal.direccion}}</td>
+            <td>{{sucursal.localidad}}</td>
+
+            <td><button type="button" class="btn btn-primary"  (click)="openModal(content,sucursal.idSucursal)">
+              Ver
+            </button></td>            
+            <td><button (click)="delete(sucursal.idSucursal)">Borrar</button></td>            
+         
+          </tr>
         <!-- Aquí se insertarán los datos de la tabla -->
       </tbody>
+      
     </table>
   </div>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Actualizar Sucursal</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion2">
+
+      <label for="localidad">Localidad:</label>
+      <input type="text" id="localidad" name="localidad" [(ngModel)] = "localidad2">
+    </div>
+    <div class="modal-footer">
+
+    <button type="button" class="btn btn-light" (click)=update()>Actualizar</button> 
+
+    <!--<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> !-->
+    </div>
+  </ng-template>
 </body>
 </html>
+

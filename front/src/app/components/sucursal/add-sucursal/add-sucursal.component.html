@@ -11,20 +11,34 @@
     </div>
     <div class="right">
       <h2>Completa la información de la sucursal</h2>
-      <form>
+      <form (formGroup)="sucursalForm">
         <label for="direccion">Dirección:</label>
-        <input type="text" id="direccion" name="direccion">
-        <label for="localidad">Localidad:</label>
-        <input type="text" id="localidad" name="localidad">
-        <div id="items">
-          <label for="item">Item:</label>
-          <input type="text" name="item1" /><br>
+        <input type="text" id="direccion" name="direccion" formControlName = "direccion">
+        <div *ngIf="direccion.invalid">
+        <p *ngIf="direccion.errors.required" style="font-size: small; color: red">campo obligatorio</p>
         </div>
-        <button type="button" onclick="agregarCampo()">Agregar item</button>
-        <button type="submit">Enviar</button>
+       
+
+        <label for="localida  d">Localidad:</label>
+        <input type="text" id="localidad" name="localidad" formControlName = "localidad">
+        <div *ngiF="localidad.invalid">
+
+        <p *ngIf="localidad.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+
+        </div>  
+   
+
+        <label for="items">Items:</label>
+        <input type="number" id="items" name="items" formControlName = "items">
+        <div *ngIf="items.invalid">
+
+        <p *ngIf="items.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+        </div>
+        <button type="submit" (click)="addSucursal()">Enviar</button>
       </form>
     </div>
 
   
   </body>
 </html>
+
