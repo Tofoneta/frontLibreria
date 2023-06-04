@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SucursalService } from 'src/app/services/sucursal.service';
 import { sucursal } from 'src/app/models/sucursal';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { item } from 'src/app/models/item';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-view-sucursal',
@@ -16,9 +18,9 @@ export class ViewSucursalComponent implements OnInit {
   sucursal2: any;
   direccion2: any;
   localidad2: any;
-  
+  itemList = new Array<item>();
 
-  constructor(private sucursalService:SucursalService, private modelService: NgbModal ) { }
+  constructor(private sucursalService:SucursalService, private modelService: NgbModal,private itemService : ItemService ) { }
 
   idSucursal: any;
   modalSwitch: boolean;
@@ -53,8 +55,9 @@ export class ViewSucursalComponent implements OnInit {
 
   openModal(content: any, idSucursal : Number){
     this.idSucursal = idSucursal; 
+  
     this.modelService.open(content);
-    
+  
 
   }
   update(){

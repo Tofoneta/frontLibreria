@@ -20,7 +20,7 @@ export class SucursalService {
 
 
   add(Sucursal: sucursal): Observable<any>{
-    return this.http.get(this.url + '/agregarSucursal')
+    return this.http.post(this.url + "/agregarSucursal",Sucursal)
   }
   getByID(id: Number): Observable<any>{
     return this.http.get(this.url+ '/' + id)

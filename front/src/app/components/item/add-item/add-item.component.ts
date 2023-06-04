@@ -36,7 +36,6 @@ export class AddItemComponent implements OnInit {
     this.itemN.libro.cantidadPaginas = 0;
     this.itemN.libro.editorial = '';
     this.itemN.precio = 3000;
-    alert(this.itemN.precio)
     this.itemForm = new FormGroup({
       'isbn' : new FormControl(this.itemN.libro.isbn,Validators.required),
       'titulo': new FormControl(this.itemN.libro.titulo,Validators.required),
@@ -63,11 +62,12 @@ export class AddItemComponent implements OnInit {
   get paginas(){return this.itemForm.get('paginas')}
   get editorial(){return this.itemForm.get('editorial')}
   get precio(){return this.itemForm.get('precio')}
+  
   addItem(){
 
     let ItemAux = new item();
     let LibroAux = new libro();
-
+    alert(this.titulo.value)
     
    
     LibroAux.area = this.area.value;
@@ -79,11 +79,8 @@ export class AddItemComponent implements OnInit {
     LibroAux.titulo = this.titulo.value;
     ItemAux.precio = this.precio.value;
 
-
   
     ItemAux.libro = LibroAux;
-
-    alert(this.precio.value);
 
     //// No se guardan los datos pasados por los válidos porqué ni siquiera los toma. Se guardan los datos de los get
 
