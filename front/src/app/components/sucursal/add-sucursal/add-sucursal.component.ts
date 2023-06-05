@@ -15,8 +15,10 @@ import { createIncrementalProgram } from 'typescript';
 export class AddSucursalComponent implements OnInit {
   sucursal = new sucursal();
   sucursalForm: FormGroup;
-  itemList = new Array<item>();
- 
+  
+  itemList: item[];
+
+
 
 
   constructor(private SucursalService : SucursalService, private ItemService: ItemService) { }
@@ -26,14 +28,14 @@ export class AddSucursalComponent implements OnInit {
   ngOnInit(): void {
     this.sucursal.direccion = "Default";
     this.sucursal.localidad = "Default 2";
-    this.sucursal.id_item = [];
-   
+    this.sucursal.items = [];
+    
  
 
     this.sucursalForm = new FormGroup({
       'direccion' : new FormControl(this.sucursal.direccion,Validators.required),
       'localidad': new FormControl(this.sucursal.localidad,Validators.required),
-      'id_item': new FormControl(this.sucursal.id_item,Validators.required),
+      'id_item': new FormControl(this.sucursal.items,Validators.required),
 
     })
     /**
@@ -50,7 +52,9 @@ export class AddSucursalComponent implements OnInit {
   get id_item(){return this.sucursalForm.get('id_item')}
 
   addItem(){
-    this.itemList.push(this.id_item.value)
+
+    alert(this.id_item.value);
+    this.itemList.push(this.id_item.value);
     alert(this.itemList.length)
 
 
@@ -60,7 +64,7 @@ export class AddSucursalComponent implements OnInit {
     let suc = new sucursal();
     suc.direccion = this.direccion.value;
     suc.localidad = this.localidad.value;
-    suc.id_item = this.itemList;
+    suc.items = this.itemList;
     
     
     this.SucursalService.add(suc).subscribe(response =>{
