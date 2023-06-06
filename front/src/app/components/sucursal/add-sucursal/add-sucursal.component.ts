@@ -12,12 +12,17 @@ import { createIncrementalProgram } from 'typescript';
   templateUrl: './add-sucursal.component.html',
   styleUrls: ['./add-sucursal.component.css']
 })
+
+
+
 export class AddSucursalComponent implements OnInit {
   sucursal = new sucursal();
   sucursalForm: FormGroup;
   
   itemList: item[];
+  
 
+  
 
 
 
@@ -52,8 +57,9 @@ export class AddSucursalComponent implements OnInit {
   get id_item(){return this.sucursalForm.get('id_item')}
 
   addItem(){
-
-    alert(this.id_item.value);
+    let itemAux = new item();
+    itemAux.id_item = this.id_item.value;
+    alert(itemAux.id_item)
     this.itemList.push(this.id_item.value);
     alert(this.itemList.length)
 
