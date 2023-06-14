@@ -1,7 +1,7 @@
 import { libro } from "./libro";
 
 export class item{
-    id_item: number;
+    item_id: number;
     precio: number;
     libro: libro
 }

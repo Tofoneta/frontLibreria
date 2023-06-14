@@ -70,9 +70,12 @@ export class ViewItemComponent implements OnInit {
 
 
   abrirModal(content: any,item: item){
-      this.idItem = item.id_item;
+      this.idItem = item.item_id;
       this.modalService.open(content);
 
+  }
+  findItem(){
+    
   }
 
   updateItem(){    
@@ -91,9 +94,9 @@ export class ViewItemComponent implements OnInit {
       Libro2.cantidadPaginas = this.paginas;    
       Item2.precio = this.precio;    
       Item2.libro = Libro2;
-      Item2.id_item = this.idItem
+      Item2.item_id = this.idItem
   
-      this.ItemService.update(Item2,Item2.id_item).subscribe(response =>{
+      this.ItemService.update(Item2,Item2.item_id).subscribe(response =>{
        
   
         alert("Update exitosa")
@@ -114,4 +117,7 @@ export class ViewItemComponent implements OnInit {
     }
 
 }
+
+
+
 

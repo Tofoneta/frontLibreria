@@ -40,7 +40,7 @@
       </thead>
       <tbody>
           <tr *ngFor="let item of itemList">
-            <td>{{item.id_item}}</td>
+            <td>{{item.item_id}}</td>
             <td>{{item.precio}}</td>
           
             <td>{{item.libro.isbn}}</td>
@@ -52,7 +52,7 @@
             <td>{{item.libro.editorial}}</td>
             
             <td><button (click)="abrirModal(content,item)">Actualizar</button></td>
-            <td><button (click)="delete(item.id_item)">Borrar</button></td>            
+            <td><button (click)="delete(item.item_id)">Borrar</button></td>            
          
           </tr>
         <!-- Aquí se insertarán los datos de la tabla -->

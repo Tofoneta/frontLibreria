@@ -28,6 +28,11 @@ export class SucursalService {
   delete(id:Number): Observable<any>{
     return this.http.post(this.url+"/"+id+"/delete",null)
   }
+  update(Sucursal: sucursal, id:number): Observable<any>{
+
+
+    return this.http.post(this.url+"/"+id+"/update",Sucursal)
+  }
 
 
 }

@@ -27,4 +27,6 @@ export class ItemService {
   update(Item: item, id:Number):Observable<any>{   
     return this.http.post(this.url + "/" + id + "/update",Item)
   }
+
+  
 }

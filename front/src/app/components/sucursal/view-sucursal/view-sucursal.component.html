@@ -20,9 +20,11 @@
     <table>
       <thead>
         <tr>
+          <th>ID Sucursal</th>
           <th>Dirección</th>
-          <th>Sucursal</th> 
-          <th>Ver</th>       
+          <th>Localidad</th> 
+          <th>Ver Libros</th>       
+          <th>Actualizar</th>
           <th>Borrar</th>
         </tr>
       </thead>
@@ -32,12 +34,15 @@
             <td>{{sucursal.idSucursal}}</td>
 
             <td>{{sucursal.direccion}}</td>
-            <td>{{sucursal.localidad}}</td>
-    
+            <td>{{sucursal.localidad}}</td>   
 
-            <td><button type="button" class="btn btn-primary"  (click)="openModal(content,sucursal.idSucursal)">
+            <td><button type="button" class="btn btn-primary"  (click)="openModal(libros,sucursal.idSucursal)">
               Ver
-            </button></td>            
+            </button></td>
+            <td><button type="button" class="btn btn-primary"  (click)="openModal(content,sucursal.idSucursal)">
+              Actualizar
+            </button></td>
+            
             <td><button (click)="delete(sucursal.idSucursal)">Borrar</button></td>            
          
           </tr>
@@ -51,31 +56,92 @@
       <td>
         <td>
           <select class ="form-control">
-            <option *ngFor="let item of itemList" [value]="item.id_item">{{item.id_item}}</option>
+            <option *ngFor="let item of itemList" [value]="item.item_id">{{item.item_id}}</option>
           </select> 
         </td> 
       
     </tr>
   </tfoot>
 
+
+  <ng-template #libros let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Ver Libros</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Autor</th>
+          <th>Precio</th> 
+          
+        </tr>
+      </thead>
+      
+        <tbody>
+          <tr *ngFor="let item of itemList">
+            <td>{{item.libro.titulo}}</td>
+
+            <td>{{item.libro.autor}}</td>
+            <td>{{item.precio}}</td>   
+
+          </tr>
+        <!-- Aquí se insertarán los datos de la tabla -->
+      </tbody>
+      
+    </table>
+    <button type="button" class="btn btn-light" (click)= update()>Actualizar</button> 
+
+    <!--<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> !-->
+  </ng-template>
+
+
+
   <ng-template #content let-modal>
     <div class="modal-header">
       <h4 class="modal-title">Actualizar Sucursal</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
-    <div class="modal-body">
-      <label for="direccion">Dirección:</label>
-      <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion2">
+    <div class="right">
+      <h2>Completa la información de la sucursal</h2>
+      <form [formGroup]="sucursalForm">
+        <tr>
+          <div class ="direccion">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" formControlName = "direccion">
+            <div *ngIf="direccion.invalid">
+              <p *ngIf="direccion.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+            </div>
+          </div>
+          <div class ="localidad">
 
-      <label for="localidad">Localidad:</label>
-      <input type="text" id="localidad" name="localidad" [(ngModel)] = "localidad2">
+            <label for="localidad">Localidad:</label>
+            <input type="text" id="localidad" name="localidad" formControlName = "localidad">
+            <div *ngiF="localidad.invalid">
+
+            <p *ngIf="localidad.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+            </div>
+
+          </div>  
+    
+          <div class = "items">
+            <label for="items">Items:</label>
+            <input type="number" id="id_item" name="id_item" formControlName = "id_item">
+            <div *ngIf="id_item.invalid">
+            <p *ngIf="id_item.errors.required" style="font-size: small; color: red">campo obligatorio</p>
+            </div>
+          </div>
+          <button type="submit" (click)="addItem()">Agregar Item</button>
+
+          <button type="submit" (click)="update()">Enviar</button>
+      </tr>
+      </form>
     </div>
     <div class="modal-footer">
 
-    <button type="button" class="btn btn-light" (click)=update()>Actualizar</button> 
-
     <!--<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> !-->
-    </div>
+    </div>    
   </ng-template>
 </body>
 </html>
