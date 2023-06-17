@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { item } from 'src/app/models/item';
 import { ItemService } from 'src/app/services/item.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { libroDTO } from 'src/app/models/libroDTO';
 
 @Component({
   selector: 'app-view-sucursal',
@@ -17,10 +18,11 @@ export class ViewSucursalComponent implements OnInit {
 
 
   sucursalList = new Array<sucursal>()
-  sucursal2: any;
-  direccion2: any;
-  localidad2: any;
-  itemList = new Array<item>();
+  sucursal2: sucursal;
+  direccion2: string;
+  localidad2 : string;
+  itemList= new Array<number>();
+  libroList = new Array<libroDTO>();
 
   constructor(private sucursalService:SucursalService, private modelService: NgbModal,private itemService : ItemService ) { }
 
@@ -100,23 +102,20 @@ export class ViewSucursalComponent implements OnInit {
   
   update(){
 
-
       let suc = new sucursal();
       suc.items = new Array<item>();
       suc.itemsAux = new Array<number>();
-      suc.direccion = this.direccion2.value;
-      suc.localidad = this.localidad2.value;
-      suc.idSucursal = this.idSucursal;
-      this.itemList.forEach(id => {
-        
-       
+      suc.direccion = this.direccion.value;
+      suc.localidad = this.localidad.value;
+      
+      this.itemList.forEach(id => {       
+          suc.itemsAux.push(id);
         
       });
-      suc.itemsAux.forEach(id =>{
-      })
+   
   
-      this.sucursalService.update(suc,suc.idSucursal).subscribe(response =>{
-        alert("Alta exitosa")     
+      this.sucursalService.update(suc,this.idSucursal).subscribe(response =>{
+        alert("Actualización exitosa")     
         
       }, error => {
         console.error(error)
@@ -132,11 +131,10 @@ export class ViewSucursalComponent implements OnInit {
 
   openLibros(libros: any, idSucursal : number){
 
-    this.sucursalService.getByID(idSucursal).subscribe(response => {
+    this.sucursalService.verLibros(idSucursal).subscribe(response => {
+      
     
-    
-      this.itemList = response
-    
+      this.libroList = response
       console.log(response)
     }, error =>{
 

@@ -33,6 +33,9 @@ export class SucursalService {
 
     return this.http.post(this.url+"/"+id+"/update",Sucursal)
   }
+  verLibros(id:Number): Observable<any>{
+    return this.http.get(this.url+"/libros"+ "/" + id)    
+  }
 
 
 }

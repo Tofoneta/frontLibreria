@@ -36,7 +36,7 @@
             <td>{{sucursal.direccion}}</td>
             <td>{{sucursal.localidad}}</td>   
 
-            <td><button type="button" class="btn btn-primary"  (click)="openModal(libros,sucursal.idSucursal)">
+            <td><button type="button" class="btn btn-primary"  (click)="openLibros(libros,sucursal.idSucursal)">
               Ver
             </button></td>
             <td><button type="button" class="btn btn-primary"  (click)="openModal(content,sucursal.idSucursal)">
@@ -53,13 +53,8 @@
   </div>
   <tfoot>
     <tr>
-      <td>
-        <td>
-          <select class ="form-control">
-            <option *ngFor="let item of itemList" [value]="item.item_id">{{item.item_id}}</option>
-          </select> 
-        </td> 
-      
+      <td>       
+
     </tr>
   </tfoot>
 
@@ -80,11 +75,14 @@
       </thead>
       
         <tbody>
-          <tr *ngFor="let item of itemList">
-            <td>{{item.libro.titulo}}</td>
+           <tr *ngFor="let libro of libroList">
+            <td>{{libro.titulo}}</td>
+            <td>{{libro.autor}}</td>
+            <td>{{libro.precio}}</td>
 
-            <td>{{item.libro.autor}}</td>
-            <td>{{item.precio}}</td>   
+
+            
+         
 
           </tr>
         <!-- Aquí se insertarán los datos de la tabla -->
@@ -107,17 +105,17 @@
       <h2>Completa la información de la sucursal</h2>
       <form [formGroup]="sucursalForm">
         <tr>
-          <div class ="direccion">
+          <div class ="direccion2">
             <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" name="direccion" formControlName = "direccion">
+            <input type="text" id="direccion2" name="direccion2" formControlName = "direccion">
             <div *ngIf="direccion.invalid">
               <p *ngIf="direccion.errors.required" style="font-size: small; color: red">campo obligatorio</p>
             </div>
           </div>
           <div class ="localidad">
 
-            <label for="localidad">Localidad:</label>
-            <input type="text" id="localidad" name="localidad" formControlName = "localidad">
+            <label for="localidad2">Localidad:</label>
+            <input type="text" id="localidad2" name="localidad2" formControlName = "localidad">
             <div *ngiF="localidad.invalid">
 
             <p *ngIf="localidad.errors.required" style="font-size: small; color: red">campo obligatorio</p>
@@ -125,9 +123,9 @@
 
           </div>  
     
-          <div class = "items">
-            <label for="items">Items:</label>
-            <input type="number" id="id_item" name="id_item" formControlName = "id_item">
+          <div class = "items2">
+            <label for="items2">Items:</label>
+            <input type="number" id="id_item2" name="id_item2" formControlName = "id_item">
             <div *ngIf="id_item.invalid">
             <p *ngIf="id_item.errors.required" style="font-size: small; color: red">campo obligatorio</p>
             </div>
